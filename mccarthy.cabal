@@ -1,0 +1,60 @@
+cabal-version:      3.0
+name:               mccarthy
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Sion Eltnam Sokaris
+maintainer:         meritamen@sdf.org
+-- copyright:
+category:           Language
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Language.Mccarthy
+                      , Language.Mccarthy.Eval
+                      , Language.Mccarthy.Parser
+                      , Language.Mccarthy.Prim
+                      , Language.Mccarthy.Repl
+                      , Language.Mccarthy.Types
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.17.2.1,
+                      containers,
+                      directory,
+                      haskeline,
+                      mtl,
+                      parsec,
+                      text
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable mccarthy
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+                  base ^>=4.17.2.1,
+                  mccarthy
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite mccarthy-test
+    import:           warnings
+    default-language: Haskell2010
+    -- other-modules:
+    -- other-extensions:
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+                  base ^>=4.17.2.1,
+                  mccarthy
