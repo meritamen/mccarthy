@@ -32,6 +32,7 @@ cdr :: Func
 cdr [List (_:xs)]                  = return $ List xs
 cdr [List []]                      = return $ Nil
 cdr [DottedList [] ltail]          = return $ ltail
+cdr [DottedList [x] ltail]         = return $ ltail
 cdr [DottedList (_:xs) ltail]      = return $ DottedList xs ltail
 cdr [DottedList [] ltail]          = return $ ltail
 cdr _                              = throwError $ ExpectedList "cdr"
