@@ -49,5 +49,6 @@ atom :: Func
 atom [Atom _]                      = return $ T
 atom [T]                           = return $ T
 atom [Nil]                         = return $ T
+atom [List []]                     = return $ T
 atom [_]                           = return $ Nil
 atom args                          = throwError $ NumArgs 1 args
